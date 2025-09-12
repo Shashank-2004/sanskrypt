@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flood Safety Quiz</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fbecec; /* light background */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 40px 15px;
+    }
+
+    .quiz-container {
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1586c6;
+    }
+
+    #progress {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #1586c6;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #eee;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #1586c6;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .question {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background:#0277bd ;
+      color: #fff;
+      transition: background 0.3s;
+    }
+
+    .options button:hover {
+      background: #0277bd;
+    }
+
+    .options button.correct {
+      background: #2e7d32 !important;
+    }
+
+    .options button.wrong {
+      background: #c62828 !important;
+      opacity: 0.8;
+    }
+
+    #next-btn {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
+      background: #0277bd;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: none;
+    }
+
+    #next-btn:hover {
+      background: #01579b;
+    }
+
+    #result {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>🌊 Flood Safety Quiz</h1>
+    <div id="progress">Question 1 of 5</div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    
+    <div class="question" id="question">Question text</div>
+    <div class="options" id="options"></div>
+    <button id="next-btn">Next</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "What should you do first when a flood warning is issued?",
+        options: ["Ignore it", "Move to higher ground", "Go swimming", "Stay in the basement"],
+        answer: "Move to higher ground",
+        tip: "⛰ Always move to higher ground immediately when flooding is likely."
+      },
+      {
+        question: "What should you avoid during floods?",
+        options: ["Walking through moving water", "Listening to updates", "Carrying an emergency kit", "Staying alert"],
+        answer: "Walking through moving water",
+        tip: "💧 Just 6 inches of moving water can knock you down!"
+      },
+      {
+        question: "What should be in your flood emergency kit?",
+        options: ["Food & water", "Flashlight", "First aid kit", "All of the above"],
+        answer: "All of the above",
+        tip: "🎒 A proper kit includes food, water, flashlight, first aid, and important documents."
+      },
+      {
+        question: "Why should you avoid driving through flooded roads?",
+        options: ["The road might be damaged", "Cars can be swept away", "Water can stall your engine", "All of the above"],
+        answer: "All of the above",
+        tip: "🚗 Flooded roads are extremely dangerous — turn around, don’t drown!"
+      },
+      {
+        question: "If trapped in a building during a flood, what should you do?",
+        options: ["Move to the highest floor or roof", "Hide in the basement", "Swim away", "Wait silently"],
+        answer: "Move to the highest floor or roof",
+        tip: "🏠 Always move up and call for help if trapped inside."
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById("question");
+    const optionsEl = document.getElementById("options");
+    const nextBtn = document.getElementById("next-btn");
+    const resultEl = document.getElementById("result");
+    const progressEl = document.getElementById("progress");
+    const progressFill = document.getElementById("progress-fill");
+
+    function loadQuestion() {
+      let q = quizData[currentQuestion];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = "";
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.onclick = () => checkAnswer(btn, option);
+        optionsEl.appendChild(btn);
+      });
+      progressEl.textContent = `Question ${currentQuestion + 1} of ${quizData.length}`;
+      progressFill.style.width = `${((currentQuestion) / quizData.length) * 100}%`;
+    }
+
+    function checkAnswer(button, selected) {
+      let q = quizData[currentQuestion];
+      let buttons = optionsEl.querySelectorAll("button");
+      buttons.forEach(b => {
+        b.disabled = true;
+        if (b.textContent === q.answer) {
+          b.classList.add("correct");
+        }
+      });
+
+      if (selected === q.answer) {
+        score++;
+      } else {
+        button.classList.add("wrong");
+      }
+
+      resultEl.style.display = "block";
+      resultEl.textContent = q.tip;
+
+      nextBtn.style.display = "inline-block";
+    }
+
+    nextBtn.addEventListener("click", () => {
+      currentQuestion++;
+      resultEl.style.display = "none";
+      nextBtn.style.display = "none";
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showFinalScore();
+      }
+    });
+
+    function showFinalScore() {
+      questionEl.style.display = "none";
+      optionsEl.style.display = "none";
+      nextBtn.style.display = "none";
+      progressEl.style.display = "none";
+      document.querySelector(".progress-bar").style.display = "none";
+      resultEl.style.display = "block";
+      resultEl.innerHTML = `
+        ✅ Quiz Completed!<br>
+        Your Score: ${score} / ${quizData.length}<br><br>
+        Stay safe and remember the tips! <br><br>
+        <a href="flood.html">
+          <button style="
+            background:#0277bd;
+            color:white;
+            font-size:16px;
+            padding:10px 20px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;">
+            Back to Flood Drill
+          </button>
+        </a>
+      `;
+    }
+
+    // Start quiz
+    loadQuestion();
+  </script>
+</body>
+</html>

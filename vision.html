@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Vision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .vision-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #1d4ed8;
+        }
+
+        .vision-text {
+            font-size: 1.25rem;
+            color: #4b5563;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+        }
+
+        .image-grid {
+            margin-top: 100px;
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1rem;
+        }
+
+        .image-caption {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .image-grid {
+                grid-template-columns: repeat(3, 1fr);
+                justify-content: center;
+            }
+        }
+
+        .vision-photo {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .vision-photo:hover {
+            transform: scale(1.02);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .vision-heading {
+                font-size: 2rem;
+            }
+            .vision-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="vision-section">
+        <div class="container">
+            <h1 class="vision-heading">Our Vision</h1>
+            <p class="vision-text">
+                To foster a culture of readiness and resilience, where every school and college community is empowered with the knowledge and skills to proactively mitigate risks, respond with confidence, and thrive in the face of any challenge. We envision a future where safety is not just a protocol, but an ingrained way of life for all students, faculty, and staff.
+            </p>
+            <div class="image-grid">
+                <div>
+                    <img src="https://media.istockphoto.com/id/185007003/photo/children-sports-team-collecting-donations-for-disaster-relief-victims-volunteers.webp?a=1&b=1&s=612x612&w=0&k=20&c=kP0Hvm_76Ew58yGzsggFrDw2nRnf-sQFXYVBEKWe3MY=" alt="Diverse group of students and teachers smiling" class="vision-photo">
+                    <p class="image-caption">Building a resilient community together.</p>
+                </div>
+                <div>
+                    <img src="https://media.istockphoto.com/id/1475234532/photo/we-understand-how-important-is-the-nature.webp?a=1&b=1&s=612x612&w=0&k=20&c=Nvr9MVEwTBwa-aADcQVHP_Fk5DHp1c9pjhVJF8Oyxjo=" alt="Student confidently using a piece of safety equipment" class="vision-photo">
+                    <p class="image-caption">Empowering individuals with practical skills.</p>
+                </div>
+                <div>
+                    <img src="https://media.istockphoto.com/id/1456926970/photo/campus-safety-center-sign-on-building.webp?a=1&b=1&s=612x612&w=0&k=20&c=nyBic-TESNpTsQ6ycNlncp6qExmKYgX9YfRYPeAcEV0=" alt="A wide shot of a serene school campus" class="vision-photo">
+                    <p class="image-caption">Creating safe and secure learning spaces.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

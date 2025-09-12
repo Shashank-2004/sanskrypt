@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Mission - Disaster Readiness in Schools & Colleges</title>
+
+<!-- Font + Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  :root{
+    --bg: #f6f9fb;
+    --card: #ffffff;
+    --primary: #1652ff;
+    --accent: #16a34a;
+    --muted: #6b7280;
+    --glass: rgba(22,82,255,0.06);
+    --radius: 14px;
+    font-size: 16px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color: #0f172a;
+    line-height:1.55;
+    padding:32px;
+  }
+  .mission-wrap{
+    max-width:1100px;
+    margin:28px auto;
+    padding:28px;
+    background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.98));
+    border-radius:var(--radius);
+    box-shadow:0 8px 30px rgba(8,15,30,0.08);
+    overflow:hidden;
+  }
+  .mission-header{
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+    margin-bottom:18px;
+  }
+  .mission-badge{
+    width:88px;height:88px;border-radius:16px;
+    background:var(--glass);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 20px rgba(22,82,255,0.08);
+    flex-shrink:0;
+  }
+  .mission-badge i{font-size:34px;color:var(--primary);transform:translateY(-2px);}
+  .mission-title{flex:1;}
+  .mission-title h1{margin:0;font-size:22px;color:#07204a;}
+  .mission-sub{margin-top:8px;color:var(--muted);font-weight:500;}
+  .mission-intro{margin-top:16px;color:#111827;font-size:15px;}
+  .read-more-btn{
+    display:inline-flex;gap:10px;align-items:center;margin-top:14px;
+    border:none;background:linear-gradient(90deg,var(--primary),#2b6ef6);
+    color:white;padding:10px 14px;border-radius:10px;cursor:pointer;
+    font-weight:600;box-shadow:0 8px 18px rgba(22,82,255,0.12);
+  }
+  .read-more-btn i{font-size:14px}
+  .long-content{
+    margin-top:22px;padding-top:18px;border-top:1px dashed rgba(10,20,40,0.04);
+    color:#111827;max-height:0;overflow:hidden;
+    transition:max-height 420ms cubic-bezier(.2,.9,.2,1), opacity .32s ease;
+    opacity:0;
+  }
+  .long-content.open{opacity:1;max-height:4000px;}
+  .section-title{margin:12px 0;color:#0b2540;font-weight:600;}
+  .bullet-example{
+    margin:10px 0 18px 0;padding:12px 14px;background:#f8fafb;
+    border-radius:10px;color:var(--muted);font-size:14px;
+  }
+  .example-list{display:flex;flex-direction:column;gap:8px;margin:10px 0 20px 0;}
+  .example-list li{margin-left:18px;color:var(--muted);font-size:14px;}
+  .mission-footer{
+    margin-top:20px;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  }
+  .tagline{font-weight:700;color:var(--accent);font-size:16px;}
+  @media(max-width:520px){
+    body{padding:18px;}
+    .mission-title h1{font-size:18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="mission-wrap" id="missionWrap">
+
+  <div class="mission-header">
+    <div class="mission-badge"><i class="fas fa-school"></i></div>
+    <div class="mission-title">
+      <h1>Our Mission: Building Disaster Readiness in Schools and Colleges</h1>
+      <div class="mission-sub">Creating a culture of preparedness, safety, and resilience for every student, teacher, and administrator.</div>
+    </div>
+  </div>
+
+  <!-- Short intro -->
+  <div class="mission-intro" id="introShort">
+    Disasters do not wait for a warning bell. Earthquakes, floods, fires, pandemics, and man-made hazards can strike at any time, disrupting lives and causing irreparable harm. Among the most vulnerable groups during such emergencies are students in schools and colleges. With classrooms full of young learners, teachers, and staff, educational institutions carry the immense responsibility of safeguarding lives while continuing to nurture knowledge.
+    <br><br>
+    Our mission is clear: to create a culture of disaster preparedness, safety, and resilience within schools and colleges. We aim to ensure that every student, teacher, and administrator is not only aware of potential risks but also empowered with the knowledge and skills to respond effectively.
+  </div>
+
+  <!-- Button starts here under intro -->
+  <div id="buttonPlaceholder">
+    <button class="read-more-btn" id="toggleBtn" aria-expanded="false" aria-controls="longContent">
+      <i class="fa-solid fa-chevron-down"></i>
+      <span id="btnText">Read More</span>
+    </button>
+  </div>
+
+  <!-- Long hidden content -->
+  <div class="long-content" id="longContent" aria-hidden="true">
+
+    <h3 class="section-title">Why Disaster Readiness in Schools and Colleges Matters</h3>
+    <p>Educational institutions are second homes for students. On average, children and young adults spend more than one-third of their day at school or college. Any disaster that strikes during school hours can put hundreds—even thousands—of lives at risk.</p>
+    <div class="bullet-example">
+      A fire in a chemistry lab, if unmanaged, can endanger an entire block of classrooms.<br>
+      An earthquake during school hours can cause panic, stampedes, and injuries if evacuation routes are unclear.<br>
+      A flood in low-lying areas can disrupt classes for weeks, affecting both safety and education.
+    </div>
+    <p>Tragedies in the past, such as the <strong>Kumbakonam School Fire (Tamil Nadu, 2004)</strong>, where 94 children lost their lives, highlight the urgent need for readiness. These incidents remind us that preparedness is not a choice but a duty.</p>
+
+    <h3 class="section-title">Core Elements of Our Mission</h3>
+
+    <h4>Spreading Awareness Among Students and Staff</h4>
+    <p>Knowledge is the first shield against disasters... </p>
+    <div class="bullet-example"><strong>Example:</strong> A “Disaster Awareness Week” in schools...</div>
+
+    <h4>Regular Safety Drills and Simulations</h4>
+    <p>Practice builds confidence... </p>
+    <div class="bullet-example"><strong>Example:</strong> In Japan, schools conduct earthquake evacuation drills every month...</div>
+
+    <h4>Emergency Infrastructure and Planning</h4>
+    <p>A safe environment is non-negotiable... </p>
+    <div class="bullet-example"><strong>Example:</strong> A school in Odisha built raised platforms as flood shelters...</div>
+
+    <h4>Teacher and Staff Training</h4>
+    <p>Teachers are the first responders in schools... </p>
+    <div class="bullet-example"><strong>Example:</strong> During the 2013 Uttarakhand floods, schools that had trained staff evacuated students early...</div>
+
+    <h4>Integration of Disaster Education in Curriculum</h4>
+    <p>Disaster education should not be a one-day event... </p>
+    <div class="bullet-example"><strong>Example:</strong> In the Philippines, disaster risk reduction is part of the national curriculum...</div>
+
+    <h4>Student Participation and Leadership</h4>
+    <p>Our mission recognizes that students are not just learners but potential leaders... </p>
+    <div class="bullet-example"><strong>Example:</strong> In Kerala, after the 2018 floods, college youth groups became first responders...</div>
+
+    <h4>Collaboration with Parents and Local Authorities</h4>
+    <p>Preparedness must extend beyond the classroom... </p>
+    <div class="bullet-example"><strong>Example:</strong> A school in Gujarat partnered with the fire department...</div>
+
+    <h3 class="section-title">Examples of Our Mission in Practice</h3>
+    <ul class="example-list">
+      <li><strong>Fire Safety Campaigns:</strong> Training in science labs.</li>
+      <li><strong>Flood Preparedness Plans:</strong> Mapping safe routes for buses.</li>
+      <li><strong>Earthquake Drills:</strong> Organizing “Drop, Cover, and Hold” drills.</li>
+      <li><strong>Pandemic Readiness:</strong> Sanitization, masks, online learning continuity.</li>
+    </ul>
+
+    <h3 class="section-title">Long-Term Vision</h3>
+    <ul class="example-list">
+      <li>Every classroom should have a visible evacuation map.</li>
+      <li>Every student should know basic first aid.</li>
+      <li>Every teacher should be trained to manage panic calmly.</li>
+      <li>Every institution should partner with disaster management authorities.</li>
+    </ul>
+
+    <p>By instilling disaster preparedness at a young age... shaping a generation of responsible, resilient citizens.</p>
+
+    <h3 class="section-title">Conclusion</h3>
+    <p>Disaster management in schools is not about fear—it is about readiness, safety, and resilience. Our mission is to ensure learning never comes at the cost of lives.</p>
+    <p>By empowering schools and colleges today, we are investing in a safer tomorrow.</p>
+
+  </div>
+
+  <div class="mission-footer">
+    <div class="tagline">Prepared Students, Safer Schools, Resilient Future</div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  const btn = document.getElementById('toggleBtn');
+  const btnText = document.getElementById('btnText');
+  const icon = btn.querySelector('i');
+  const longContent = document.getElementById('longContent');
+  const placeholder = document.getElementById('buttonPlaceholder');
+
+  btn.addEventListener('click', function(){
+    const open = longContent.classList.toggle('open');
+    longContent.setAttribute('aria-hidden', !open);
+    btn.setAttribute('aria-expanded', open);
+    btnText.textContent = open ? 'Read Less' : 'Read More';
+    icon.classList.toggle('fa-chevron-up', open);
+    icon.classList.toggle('fa-chevron-down', !open);
+
+    if(open){
+      longContent.appendChild(btn);
+      setTimeout(()=> longContent.scrollIntoView({behavior:'smooth', block:'start'}), 180);
+    } else {
+      placeholder.appendChild(btn);
+      document.getElementById('missionWrap').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

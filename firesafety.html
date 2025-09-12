@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fire Safety Training</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; margin: 0; background: #fff5f5; color: #333; }
+    header {
+      background: linear-gradient(135deg, #e63946, #ff6b6b);
+      color: white; padding: 40px 20px; text-align: center;
+    }
+    header h1 { margin: 0; font-size: 2.5rem; }
+    header p { font-size: 1.1rem; margin-top: 10px; }
+    section { max-width: 1000px; margin: auto; padding: 30px; }
+    h2 { color: #e63946; margin-top: 40px; }
+    .card {
+      background: #fff; padding: 20px; border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1); margin: 20px 0;
+      transition: transform 0.3s ease;
+    }
+    .card:hover { transform: translateY(-5px); }
+    iframe { width: 100%; height: 400px; border-radius: 15px; margin: 20px 0; }
+    .accordion { cursor: pointer; padding: 15px; border: none; outline: none;
+      background: #e63946; color: white; width: 100%; text-align: left;
+      font-size: 1rem; border-radius: 8px; margin: 10px 0; }
+    .accordion:hover { background: #c71c2c; }
+    .panel { padding: 15px; display: none; background: #ffeaea; border-radius: 8px; }
+    .quiz { background: #fff; padding: 20px; margin-top: 30px;
+      border-radius: 15px; box-shadow: 0 6px 15px rgba(0,0,0,0.1);}
+    .question { font-weight: 600; margin: 15px 0 8px; }
+    button {
+      margin-top: 15px; padding: 12px 25px; background: #e63946; color: #fff;
+      border: none; border-radius: 10px; font-size: 1rem; cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover { background: #c71c2c; }
+    .result { margin-top: 15px; font-weight: bold; color: #e63946; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🔥 Fire Safety Training</h1>
+  <p>Learn evacuation, fire extinguisher use, and hazard recognition to stay safe.</p>
+</header>
+
+<section>
+  <h2>📌 Objectives</h2>
+  <div class="card">
+    <ul>
+      <li>Understand types of fire and extinguishers.</li>
+      <li>Learn safe evacuation methods.</li>
+      <li>Practice fire alarm and emergency drills.</li>
+      <li>Recognize fire hazards in daily environments.</li>
+    </ul>
+  </div>
+
+  <h2>🎥 Training Videos</h2>
+  <div class="card">
+    <iframe src="https://www.youtube.com/embed/wWzUFdXCZrw" allowfullscreen></iframe>
+  <iframe src="https://www.youtube.com/embed/BLjoWjCrDqg" allowfullscreen></iframe>
+  </div>
+
+  <h2>📖 Step-by-Step Guide</h2>
+  <button class="accordion">🧯 Using Fire Extinguisher (PASS Method)</button>
+  <div class="panel">
+    <p>P → Pull the pin.<br>A → Aim at the base of fire.<br>S → Squeeze handle.<br>S → Sweep side to side.</p>
+  </div>
+
+  <button class="accordion">🚪 Evacuation Procedures</button>
+  <div class="panel">
+    <p>1. Stay calm and follow exit signs.<br>
+       2. Never use elevators.<br>
+       3. Crawl under smoke.<br>
+       4. Gather at assembly point.</p>
+  </div>
+
+  <button class="accordion">⚡ Electrical Fire Safety</button>
+  <div class="panel">
+    <p>1. Turn off electricity if safe.<br>
+       2. Use CO₂ extinguisher.<br>
+       3. Never use water.<br>
+       4. Call emergency services.</p>
+  </div>
+
+  <h2>📝 Quiz</h2>
+  <div class="quiz">
+    <div class="question">1. PASS stands for?</div>
+    <label><input type="radio" name="q1" value="correct"> Pull, Aim, Squeeze, Sweep</label><br>
+    <label><input type="radio" name="q1" value="wrong"> Push, Alert, Spray, Stop</label><br>
+
+    <div class="question">2. Which extinguisher is best for electrical fires?</div>
+    <label><input type="radio" name="q2" value="wrong"> Water</label><br>
+    <label><input type="radio" name="q2" value="correct"> CO₂</label><br>
+
+    <div class="question">3. First action during fire?</div>
+    <label><input type="radio" name="q3" value="correct"> Raise alarm & evacuate</label><br>
+    <label><input type="radio" name="q3" value="wrong"> Save belongings</label><br>
+
+    <button onclick="checkQuiz()">Submit Quiz</button>
+    <div class="result" id="quizResult"></div>
+  </div>
+</section>
+
+<script>
+  const acc = document.getElementsByClassName("accordion");
+  for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      const panel = this.nextElementSibling;
+      panel.style.display = (panel.style.display === "block") ? "none" : "block";
+    });
+  }
+
+  function checkQuiz() {
+    let score = 0;
+    const answers = document.querySelectorAll("input[type=radio]:checked");
+    answers.forEach(ans => { if (ans.value === "correct") score++; });
+    document.getElementById("quizResult").innerText = `✅ You scored ${score}/3`;
+  }
+</script>
+
+</body>
+</html>

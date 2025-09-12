@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .team-heading {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            justify-items: center;
+        }
+
+        .team-member {
+            width:65%;
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        @media (min-width: 640px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="team-heading">Our Team</h1>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="shashank_img.jpg" alt="Team member photo" class="team-photo">
+                <h3 class="member-name">Shashank Mishra</h3>
+            </div>
+            <div class="team-member">
+                <img src="prafull.jpg" alt="Team member photo" class="team-photo">
+                <h3 class="member-name">Prafull Kumar Vats</h3>
+            </div>
+            <div class="team-member">
+                <img src="Asmi.jpg" alt="Team member photo" class="team-photo">
+                <h3 class="member-name">Asmi Gupta</h3>
+            </div>
+            <div class="team-member">
+                <img src="Bhumika.jpg" alt="Team member photo" class="team-photo">
+                <h3 class="member-name">Bhumika yadav</h3>
+            </div>
+            <div class="team-member">
+                <img src="Dev.jpg" alt="Team member photo" class="team-photo">
+                <h3 class="member-name">Devraj Singh Chauhan</h3>
+            </div>
+            <div class="team-member">
+                <img src="Avi_img.jpg" alt="Team member photo" class="team-photo">
+                <h3 class="member-name">Avi Pareta</h3>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

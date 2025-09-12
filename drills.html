@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drills Section</title>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --accent: #ff6b35;
+      --text: #1a1a1a;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .drills-section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .drills-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+
+    .drills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .drill-card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .drill-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .drill-icon {
+      font-size: 50px;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .drill-card h3 {
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .drill-card p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .drill-card a {
+      text-decoration: none;
+      color: #fff;
+      background: var(--accent);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+
+    .drill-card a:hover {
+      background: #e45c28;
+    }
+  </style>
+</head>
+<body>
+  
+  <section class="drills-section" id="drills">
+    <h2>Preparedness Drills</h2>
+    <p>Regular drills ensure that students and staff know exactly how to act during emergencies.</p>
+    
+    <br>
+    
+    <div class="drills-grid">
+      <div class="drill-card">
+        <i class="fas fa-fire-extinguisher drill-icon"></i>
+        <h3>Fire Drill</h3>
+        <p>Practice safe evacuation routes and fire safety steps to ensure quick response during fire emergencies.</p>
+        <a href="fire.html">Learn More</a>
+      </div>
+      
+      <div class="drill-card">
+        <i class="fas fa-house-crack drill-icon"></i>
+        <h3>Earthquake Drill</h3>
+        <p>Learn “Drop, Cover, and Hold On” techniques and safe evacuation during seismic events.</p>
+        <a href="earthquake.html">Learn More</a>
+      </div>
+      
+    </div>
+
+    <br>
+    <br>
+
+    <div class="drills-grid">
+      <div class="drill-card">
+        <i class="fas fa-water drill-icon"></i>
+        <h3>Flood Drill</h3>
+        <p>Understand safe evacuation to higher ground and emergency protocols during floods.</p>
+        <a href="flood.html">Learn More</a>
+      </div>
+      
+      <div class="drill-card">
+        <i class="fas fa-kit-medical drill-icon"></i>
+        <h3>Medical Emergency Drill</h3>
+        <p>Practice first-aid response, calling for help, and immediate safety measures.</p>
+        <a href="medical__emergency.html">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

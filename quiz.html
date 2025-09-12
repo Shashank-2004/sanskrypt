@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Campus Safety Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4f46e5;
+      --correct-color: #22c55e;
+      --incorrect-color: #ef4444;
+      --text-color: #1f2937;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color:#4C80E1;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    .container {
+      background-color:#fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    h1 { color: var(--primary-color); margin-bottom: 0.5rem; }
+
+    .progress {
+      background-color: #e5e7eb;
+      border-radius: 99px;
+      padding: 0.25rem 1rem;
+      display: inline-block;
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+
+    .scenario { display: none; }
+    .scenario.active { display: block; }
+
+    .options {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+    }
+
+    .options li {
+      background-color: #f9fafb;
+      border: 2px solid #e5e7eb;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .options li:hover {
+      border-color: var(--primary-color);
+      background-color: #eef2ff;
+    }
+
+    .options li.disabled {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .feedback {
+      margin-top: 1rem;
+      font-weight: 600;
+      height: 1.5rem;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+
+    .button.hidden {
+      display: none;
+    }
+
+    .button:hover {
+      background-color: #4338ca;
+    }
+
+    #congrats-container,
+    #oops-container {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      box-shadow: var(--shadow);
+      animation: fadeInOut 3s ease-in-out forwards;
+    }
+
+    #congrats-container { background-color: var(--correct-color); }
+    #oops-container { background-color: var(--incorrect-color); }
+
+    .hidden { display: none !important; }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+      10%, 90% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+    }
+
+    @keyframes rise {
+      from { transform: translateY(0); opacity: 0.8; }
+      to { transform: translateY(-120vh); opacity: 0; }
+    }
+
+    .reflection textarea {
+      width: 90%;
+      height: 100px;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.5rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    #score-container {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 2rem 0;
+      color: var(--primary-color);
+    }
+    @media (max-width: 768px) {
+      #congrats-container,
+      #oops-container {
+        margin-top: 40px;
+      width:60%;
+      }
+      .heading{
+        font-size: 25px;
+      }
+      .body{
+        padding:0px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="heading">What Would You Do?</h1>
+    <div class="progress" id="progress">Scenario 1 of 8</div>
+
+    <!-- Scenario 1 -->
+    <div class="scenario active" id="scenario1">
+      <h2>🔥 Fire in the Science Lab</h2>
+      <p>You see smoke near your classroom before the fire alarm goes off. What will you do first?</p>
+      <ul class="options">
+        <li onclick="handleAnswer(1, false, this)">Ignore it and stay seated</li>
+        <li onclick="handleAnswer(1, true, this)">Inform your teacher calmly and help evacuate</li>
+        <li onclick="handleAnswer(1, false, this)">Run without thinking</li>
+      </ul>
+      <div class="feedback" id="feedback1"></div>
+      <a href="#" class="button hidden" id="next1">Next Scenario</a>
+    </div>
+
+    <!-- Scenario 2 -->
+    <div class="scenario" id="scenario2">
+      <h2>🌍 Earthquake During Assembly</h2>
+      <p>The ground starts shaking. Students are panicking. What should you do?</p>
+      <ul class="options">
+        <li onclick="handleAnswer(2, true, this)">Drop, cover, and hold on</li>
+        <li onclick="handleAnswer(2, false, this)">Stand near windows</li>
+        <li onclick="handleAnswer(2, false, this)">Run towards the exit immediately</li>
+      </ul>
+      <div class="feedback" id="feedback2"></div>
+      <a href="#" class="button hidden" id="next2">Next Scenario</a>
+    </div>
+
+    <!-- Scenario 3 -->
+    <div class="scenario" id="scenario3">
+      <h2>💧 Flood Alert at Night</h2>
+      <p>You receive a flood warning late at night. Some classmates live nearby in low-lying areas. What should you do first?</p>
+      <ul class="options">
+        <li onclick="handleAnswer(3, true, this)">Inform friends and family immediately</li>
+        <li onclick="handleAnswer(3, false, this)">Wait until morning to see if it’s serious</li>
+        <li onclick="handleAnswer(3, false, this)">Ignore the alert</li>
+      </ul>
+      <div class="feedback" id="feedback3"></div>
+      <a href="#" class="button hidden" id="next3">Next Scenario</a>
+    </div>
+
+    <!-- Scenario 4 -->
+    <div class="scenario" id="scenario4">
+      <h2>💙 Helping a Friend in Distress</h2>
+      <p>During a safety drill, a friend feels dizzy and scared and wants to leave the safe area. How should you help them?</p>
+      <ul class="options">
+        <li onclick="handleAnswer(4, true, this)">Offer calm support and guide them through the process</li>
+        <li onclick="handleAnswer(4, false, this)">Tell them to toughen up and not complain</li>
+        <li onclick="handleAnswer(4, false, this)">Leave them alone and focus on your safety</li>
+      </ul>
+      <div class="feedback" id="feedback4"></div>
+      <a href="#" class="button hidden" id="next4">Next Scenario</a>
+    </div>
+
+    <!-- Scenario 5 -->
+    <div class="scenario" id="scenario5">
+      <h2>☀ Communicating During a Crisis</h2>
+      <p>You are part of the emergency response team in your school. A message needs to be sent quickly to all students and staff. What’s the best way to communicate?</p>
+      <ul class="options">
+        <li onclick="handleAnswer(5, true, this)">Use the school’s messaging system and follow up with calls if necessary</li>
+        <li onclick="handleAnswer(5, false, this)">Wait until the next morning to send a report</li>
+        <li onclick="handleAnswer(5, false, this)">Tell only a few friends and hope the message spreads</li>
+      </ul>
+      <div class="feedback" id="feedback5"></div>
+      <a href="#" class="button hidden" id="next5">Next Scenario</a>
+    </div>
+
+    <!-- Scenario 6 -->
+    <div class="scenario" id="scenario6">
+      <h2>⚡ Power Outage During a Storm</h2>
+      <p>A severe storm causes a sudden power outage in your campus. The area is dark and some students are scared. What should you do first?</p>
+      <ul class="options">
+        <li onclick="handleAnswer(6, true, this)">Use your phone’s flashlight to help others move safely</li>
+        <li onclick="handleAnswer(6, false, this)">Panic and run around aimlessly</li>
+        <li onclick="handleAnswer(6, false, this)">Stay where you are and wait for someone else to fix it</li>
+      </ul>
+      <div class="feedback" id="feedback6"></div>
+      <a href="#" class="button hidden" id="next6">Next Scenario</a>
+    </div>
+
+    <!-- Scenario 7 -->
+    <div class="scenario" id="scenario7">
+      <h2>🧪 Chemical Spill in the Lab</h2>
+      <p>During an experiment, you notice a chemical spill near equipment. The area smells strong. What’s the first action you should take?</p>
+      <ul class="options">
+        <li onclick="handleAnswer(7, true, this)">Alert the teacher immediately and keep others away</li>
+        <li onclick="handleAnswer(7, false, this)">Try to clean it yourself without gloves</li>
+        <li onclick="handleAnswer(7, false, this)">Ignore it and continue with the experiment</li>
+      </ul>
+      <div class="feedback" id="feedback7"></div>
+      <a href="#" class="button hidden" id="next7">Next Scenario</a>
+    </div>
+
+    <!-- Scenario 8 -->
+    <div class="scenario" id="scenario8">
+      <h2>🏥 Helping Someone with a Minor Injury</h2>
+      <p>During a school event, a student trips and scrapes their knee. They are in pain but conscious. What should you do first?</p>
+      <ul class="options">
+        <li onclick="handleAnswer(8, true, this)">Offer help, clean the wound, and inform staff</li>
+        <li onclick="handleAnswer(8, false, this)">Ignore it and walk away</li>
+        <li onclick="handleAnswer(8, false, this)">Laugh at them for being careless</li>
+      </ul>
+      <div class="feedback" id="feedback8"></div>
+      <a href="#" class="button hidden" id="next8">Submit & Reflect</a>
+    </div>
+
+    <!-- Score Screen -->
+    <div class="scenario" id="score-screen">
+      <h2>🏆 Your Score</h2>
+      <div id="score-container"></div>
+      <a href="#" class="button" onclick="showReflection()">Continue to Reflection</a>
+    </div>
+
+    <!-- Reflection -->
+    <div class="scenario" id="reflection">
+      <h2>💬 Reflection</h2>
+      <p>What did you learn today about staying calm and helping in emergencies?</p>
+      <div class="reflection">
+        <textarea placeholder="Write your thoughts here..."></textarea>
+      </div>
+      <a href="#" class="button" onclick="alert('Thank you for reflecting! Stay safe!')">Submit Reflection</a>
+    </div>
+  </div>
+
+  <div id="congrats-container" class="hidden">🎉 Congratulations! 🎉</div>
+  <div id="oops-container" class="hidden">✘ Oops! ✘</div>
+
+  <script>
+    let current = 1;
+    let score = 0;
+    const totalScenarios = 8; // Change this if you add/remove scenarios
+
+    function handleAnswer(scenario, correct, el) {
+      const fb = document.getElementById('feedback' + scenario);
+      const nxt = document.getElementById('next' + scenario);
+      el.parentElement.querySelectorAll('li').forEach(li => li.classList.add('disabled'));
+      fb.textContent = correct ? "✔ Correct! This is the right action to stay safe." : "✘ Incorrect. Think about what helps everyone stay safe.";
+      if (correct) { score++; showCongratulations(); } else { showOops(); }
+      nxt.classList.remove('hidden');
+      nxt.onclick = function(e) {
+        e.preventDefault();
+        document.getElementById('congrats-container').classList.add('hidden');
+        document.getElementById('oops-container').classList.add('hidden');
+        document.getElementById('scenario' + scenario).classList.remove('active');
+        current++;
+        const prog = document.getElementById('progress');
+        if (current <= totalScenarios) {
+          document.getElementById('scenario' + current).classList.add('active');
+          prog.textContent = 'Scenario ' + current + ' of ' + totalScenarios;
+        } else {
+          showScore();
+        }
+      };
+    }
+
+    function showCongratulations() {
+      const c = document.getElementById('congrats-container');
+      c.classList.remove('hidden');
+      for (let i = 0; i < 5; i++) createBalloon();
+    }
+
+    function showOops() {
+      document.getElementById('oops-container').classList.remove('hidden');
+    }
+
+    function createBalloon() {
+      const colors = ['#ef4444','#3b82f6','#22c55e','#eab308','#8b5cf6','#f97316'];
+      const b = document.createElement('div');
+      b.className = 'balloon';
+      b.style.left = Math.random() * window.innerWidth + 'px';
+      b.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+      document.body.appendChild(b);
+      b.addEventListener('animationend', () => b.remove());
+    }
+
+    function showScore() {
+      const prog = document.getElementById('progress');
+      prog.textContent = 'Quiz Completed';
+      document.getElementById('score-container').textContent = `You scored ${score} out of ${totalScenarios}`;
+      document.getElementById('score-screen').classList.add('active');
+    }
+
+    function showReflection() {
+      document.getElementById('score-screen').classList.remove('active');
+      document.getElementById('reflection').classList.add('active');
+      document.getElementById('progress').textContent = 'Reflection';
+    }
+  </script>
+</body>
+</html>
