@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Disaster Preparedness Education System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Reset & Base Styles */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+    }
+    .container { width: 90%; max-width: 1100px; margin: auto; }
+    h1, h2, h3 { font-weight: 700; color: #2c3e50; margin-bottom: 0.5em; }
+    a { color: #3498db; text-decoration: none; transition: 0.3s; }
+    a:hover { color: #1d6fa5; }
+
+    /* Hero Section */
+    .contact-hero {
+      background: linear-gradient(135deg, #3498db, #2ecc71);
+      color: #fff;
+      text-align: center;
+      padding: 5rem 1rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .contact-hero h2 { font-size: 3rem; margin-bottom: 1rem; }
+
+    /* Contact Info Cards */
+    .contact-info { padding: 4rem 0; }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
+    .card .icon { font-size: 2.5rem; margin-bottom: 1rem; color: #3498db; }
+    .card h3 { margin-bottom: 0.5rem; }
+    .card.emergency { background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff; }
+    .card.emergency .icon, .card.emergency a { color: #fff; }
+    .cta-button {
+      display: inline-block;
+      background: #fff;
+      color: #c0392b !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      margin-top: 1rem;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .cta-button:hover { background: #f5f5f5; }
+
+    /* Contact Form */
+    .contact-form-section { padding: 4rem 0; }
+    .contact-form-section h3 { text-align: center; margin-bottom: 2rem; font-size: 2rem; }
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      animation: fadeInUp 1s ease;
+    }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 700; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px;
+      font-size: 1rem; transition: 0.3s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: #3498db; box-shadow: 0 0 6px rgba(52,152,219,0.4);
+    }
+    button[type="submit"] {
+      width: 100%; padding: 1rem; font-size: 1.1rem;
+      background: linear-gradient(135deg, #3498db, #2ecc71);
+      color: #fff; border: none; border-radius: 8px; cursor: pointer;
+      transition: 0.3s;
+    }
+    button[type="submit"]:hover { background: linear-gradient(135deg, #2980b9, #27ae60); }
+    #form-message { margin-top: 1rem; padding: 1rem; border-radius: 8px; text-align: center; display: none; }
+
+    /* FAQ Section */
+    .faq-section { padding: 4rem 0; }
+    .faq-section h3 { text-align: center; margin-bottom: 2rem; font-size: 2rem; }
+    .accordion-item {
+      background: #fff; border-radius: 12px; margin-bottom: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden; transition: 0.3s;
+    }
+    .accordion-button {
+      width: 100%; padding: 1.5rem; font-size: 1.1rem;
+      font-weight: 700; background: #fff; border: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .accordion-button i { transition: transform 0.3s; }
+    .accordion-item.active .accordion-button i { transform: rotate(180deg); }
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; padding: 0 1.5rem; }
+    .accordion-content p { padding: 1rem 0; }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+    .social-links a {
+      color: #fff; font-size: 1.5rem; margin: 0 0.5rem;
+      transition: transform 0.3s, color 0.3s;
+    }
+    .social-links a:hover { color: #2ecc71; transform: scale(1.2); }
+
+    /* Animations */
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    @keyframes fadeInUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .contact-hero h2 { font-size: 2rem; }
+      .contact-hero { padding: 3rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <!-- Hero -->
+    <section class="contact-hero">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <p>We're here to help you build a safer community. Reach out for support, partnerships, or inquiries.</p>
+      </div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="contact-info">
+      <div class="container grid-container">
+        <div class="card">
+          <i class="fas fa-phone-alt icon"></i>
+          <h3>General Inquiries</h3>
+          <p>+91-9065494811</p>
+          <a href="tel:+919065494811">Call Us</a>
+        </div>
+        <div class="card">
+          <i class="fas fa-envelope icon"></i>
+          <h3>Email Address</h3>
+          <p>disasterdock@gmail.com</p>
+          <a href="mailto:disasterdock@gmail.com">Send an Email</a>
+        </div>
+        <div class="card">
+          <i class="fas fa-map-marker-alt icon"></i>
+          <h3>Our Office</h3>
+          <p>123 Resilience Lane, Safe City, India</p>
+          <a href="https://maps.google.com/?q=123+Resilience+Lane,+Safe+City" target="_blank">View on Map</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+      <div class="container">
+        <h3>Send us a Message</h3>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a subject...</option>
+              <option value="general">General Inquiry</option>
+              <option value="technical">Technical Support</option>
+              <option value="partnership">Partnership/Collaboration</option>
+              <option value="media">Media/Press Inquiry</option>
+              <option value="feedback">Feedback & Suggestions</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+          <button type="submit">Submit Message</button>
+          <div id="form-message"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <div class="container">
+        <h3>Frequently Asked Questions</h3>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-button">What is the purpose of this system? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion-content">
+              <p>This system provides disaster preparedness and response education for schools and colleges.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-button">How can my school register? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion-content">
+              <p>Use the contact form above and select "Partnership/Collaboration." Our team will reach out to you.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-button">Is the system free to use? <i class="fas fa-chevron-down"></i></button>
+            <div class="accordion-content">
+              <p>We offer a free plan for basic modules. Contact our team for detailed pricing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 DisasterDock. All Rights Reserved.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm');
+      const formMessage = document.getElementById('form-message');
+
+      // ✅ Replaced the simple script with a function that sends data to the server
+      contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent default form submission
+
+        // Show a "submitting" message
+        formMessage.textContent = 'Submitting...';
+        formMessage.style.display = 'block';
+        formMessage.style.background = '#e9f1f8';
+        formMessage.style.color = '#3498db';
+
+        // Collect form data
+        const formData = {
+          name: contactForm.name.value.trim(),
+          email: contactForm.email.value.trim(),
+          subject: contactForm.subject.value,
+          message: contactForm.message.value.trim()
+        };
+
+        try {
+          // Send data to your deployed Render server
+          const response = await fetch(' https://consult-form.onrender.com', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            // Success state
+            formMessage.textContent = '✅ Thank you for your message! We will get back to you shortly.';
+            formMessage.style.background = '#d4edda';
+            formMessage.style.color = '#155724';
+            contactForm.reset();
+          } else {
+            // Error state
+            formMessage.textContent = '❌ An error occurred: ' + result.message;
+            formMessage.style.background = '#f8d7da';
+            formMessage.style.color = '#721c24';
+          }
+        } catch (error) {
+          // Network error or other fetch-related issues
+          console.error('Fetch error:', error);
+          formMessage.textContent = '❌ Error: Failed to connect to the server.';
+          formMessage.style.background = '#f8d7da';
+          formMessage.style.color = '#721c24';
+        }
+      });
+
+      // FAQ Accordion (existing code, no changes needed here)
+      const buttons = document.querySelectorAll('.accordion-button');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.parentElement;
+          item.classList.toggle('active');
+          const content = btn.nextElementSibling;
+          if (item.classList.contains('active')) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+          } else {
+            content.style.maxHeight = '0';
+          }
+        });
+      });
+    });
+</script>
+</body>
+</html>

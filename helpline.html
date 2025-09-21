@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency & Helpline Numbers India</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #3e3e3e;
+            --background-start: #ffafbd;
+            --background-end: #ffc3a0;
+            --card-bg: #ffffff;
+            --card-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--background-start), var(--background-end));
+            color: var(--secondary-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .main-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, border 0.4s ease-in-out;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--hover-shadow);
+            border: 2px solid var(--primary-color);
+        }
+
+        .service {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .number:hover {
+            color: #d32f2f;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+            body {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="main-heading">Emergency & Helpline Numbers</h1>
+    <div class="container">
+        <div class="card">
+            <div class="service">National Emergency Number</div>
+            <a href="tel:112" class="number">112</a>
+        </div>
+        <div class="card">
+            <div class="service">Tourist Helpline Number</div>
+            <a href="tel:1363" class="number">1363</a>
+        </div>
+        <div class="card">
+            <div class="service">Police</div>
+            <a href="tel:100" class="number">100</a>
+        </div>
+        <div class="card">
+            <div class="service">Fire</div>
+            <a href="tel:101" class="number">101</a>
+        </div>
+        <div class="card">
+            <div class="service">Ambulance</div>
+            <a href="tel:102" class="number">102</a>
+        </div>
+        <div class="card">
+            <div class="service">Road Accident</div>
+            <a href="tel:1073" class="number">1073</a>
+        </div>
+        <div class="card">
+            <div class="service">Disaster Management</div>
+            <a href="tel:108" class="number">108</a>
+        </div>
+        <div class="card">
+            <div class="service">Air Accident</div>
+            <a href="tel:1071" class="number">1071</a>
+        </div>
+        <div class="card">
+            <div class="service">Women in Distress</div>
+            <a href="tel:1091" class="number">1091</a>
+        </div>
+        <div class="card">
+            <div class="service">Medical Helpline</div>
+            <a href="tel:104" class="number">104</a>
+        </div>
+        <div class="card">
+            <div class="service">Indian Railway Security Helpline</div>
+            <a href="tel:1322" class="number">1322</a>
+        </div>
+        <div class="card">
+            <div class="service">Earthquake Helpline Service</div>
+            <a href="tel:1092" class="number">1092</a>
+        </div>
+    </div>
+</body>
+</html>

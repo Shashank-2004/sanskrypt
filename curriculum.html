@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Programs — Disaster Preparedness & Response Education</title>
+  <style>
+    :root{--accent:#0f766e;--muted:#6b7280;--bg:#f8fafc;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#0f172a}
+    .container{max-width:1100px;margin:32px auto;padding:24px}
+    header{display:flex;align-items:center;gap:16px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#076267);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    h1{font-size:1.5rem;margin:0}
+    p.lead{color:var(--muted);margin-top:6px}
+
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:24px;margin-top:20px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr;padding-bottom:12px}}
+
+    .card{background:white;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.06);padding:20px}
+
+    /* curriculum list (accordion) */
+    .curriculum-list{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+    .module{border:1px solid #e6eef0;border-radius:10px;overflow:hidden}
+    .module button{all:unset;display:flex;justify-content:space-between;align-items:center;padding:14px 16px;width:100%;cursor:pointer}
+    .module h3{margin:0;font-size:1rem}
+    .meta{font-size:0.9rem;color:var(--muted)}
+    .module .panel{padding:0 16px 16px 16px;color:#0b1222;line-height:1.45;display:none}
+    .module.open .panel{display:block}
+    .module .chev{font-size:18px;color:var(--accent)}
+
+    /* sidebar */
+    .sidebar .kpi{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+    .pill{background:#eef8f7;color:#064643;padding:8px 10px;border-radius:999px;font-weight:600}
+
+    /* actions */
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:8px;border:none;cursor:pointer;font-weight:600}
+    .btn.ghost{background:transparent;border:1px solid #e6eef0;color:var(--accent)}
+
+    footer{margin-top:22px;text-align:center;color:var(--muted);font-size:0.9rem}
+
+    /* small helpers */
+    .tag{background:#eef2ff;color:#3730a3;padding:6px 8px;border-radius:8px;font-size:0.8rem}
+    .list-compact{padding-left:18px;margin-top:8px}
+
+    /* Media Queries for Mobile Phones */
+@media (max-width: 900px) {
+    /* Main layout change to single column */
+    .grid {
+        grid-template-columns: 1fr;
+        padding-bottom: 0;
+    }
+
+    /* Adjust container padding */
+    .container {
+        padding: 16px;
+    }
+
+    /* Reduce header font sizes and gap */
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+
+    header h1 {
+        font-size: 1.25rem;
+    }
+
+    p.lead {
+        font-size: 0.95rem;
+        margin-top: 4px;
+    }
+
+    /* General card adjustments */
+    .card {
+        padding: 16px;
+    }
+
+  .module button {
+  all: unset;
+  display: flex;
+  justify-content: space-between; /* spread text + arrow */
+  align-items: center;
+  width: 100%;
+  padding: 14px 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: left;
+}
+
+.module button > div:first-child {
+  flex: 1;       /* let the text block expand */
+  min-width: 0;  /* prevent overflow on small screens */
+}
+
+.module h3 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  word-wrap: break-word; /* wrap text on mobile */
+}
+
+.module .meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  word-wrap: break-word; /* wrap long text */
+}
+
+    .module .panel {
+        width: 100%;
+        justify-content: space-evenly;
+        font-size: 0.9rem;
+    }
+
+    /* Sidebar adjustments */
+    .sidebar {
+        margin-top: 24px;
+    }
+
+    .sidebar .card {
+        padding: 16px;
+    }
+
+    .sidebar .kpi {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* Button row adjustments */
+    .row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .btn, .btn.ghost {
+        width: 100%;
+        text-align: center;
+    }
+    .heading{
+      font-size: 23px;
+    }
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">DP</div>
+      <div>
+        <h1 class="heading">Programs — Disaster Preparedness &amp; Response</h1>
+        <p class="lead">Curriculum designed for Schools &amp; Colleges: modular, practical, and aligned to safety best-practices.</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main class="card">
+        <h2 style="margin-top:0">Curriculum Modules</h2>
+        <p class="meta">Each module contains learning objectives, suggested activities, assessment ideas and resources.</p>
+
+        <ul class="curriculum-list" id="curriculum">
+
+          <!-- 1 -->
+          <li class="module" data-module="1">
+            <button aria-expanded="false">
+              <div>
+                <h3>1. Introduction to Disasters &amp; Hazards</h3>
+                <div class="meta">Types of hazards, hazard vs risk, local hazard mapping</div>
+              </div>
+            </button>
+            <div class="panel">
+              <p><strong>Learning outcomes:</strong> Identify common natural &amp; man-made hazards; distinguish hazard/risk/vulnerability.</p>
+              <ul class="list-compact">
+                <li>Activities: local hazard walk, hazard bingo, classroom mapping.</li>
+                <li>Assessment: short quiz &amp; reflective map submission.</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- 2 -->
+          <li class="module" data-module="2">
+            <button aria-expanded="false">
+              <div>
+                <h3>2. Risk Reduction &amp; Disaster Prevention</h3>
+                <div class="meta">Mitigation measures, resilient infrastructure, safe school guidelines</div>
+              </div>
+            </button>
+            <div class="panel">
+              <p><strong>Learning outcomes:</strong> Describe mitigation strategies at household and school level.</p>
+              <ul class="list-compact">
+                <li>Activities: risk assessment of classroom, simple retrofitting ideas.</li>
+                <li>Assessment: group project proposing low-cost mitigation for school.</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- 3 -->
+          <li class="module" data-module="3">
+            <button aria-expanded="false">
+              <div>
+                <h3>3. Early Warning Systems &amp; Communication</h3>
+                <div class="meta">Warning chains, sirens, community alerting, basic radio communication</div>
+              </div>
+            </button>
+            <div class="panel">
+              <p>Exercises on interpreting alerts and role-play of warning dissemination.</p>
+              <ul class="list-compact">
+                <li>Assessment: drill evaluation &amp; communication plan write-up.</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- 4 -->
+          <li class="module" data-module="4">
+            <button aria-expanded="false">
+              <div>
+                <h3>4. First Aid &amp; Basic Life Support</h3>
+                <div class="meta">CPR basics, wound care, fracture immobilization, bleeding control</div>
+              </div>
+            </button>
+            <div class="panel">
+              <p>Practical demonstrations and competency checks. Partner with local health services where possible.</p>
+              <ul class="list-compact"><li>Assessment: practical checklist &amp; scenario-based test.</li></ul>
+            </div>
+          </li>
+
+          <!-- 5 -->
+          <li class="module" data-module="5">
+            <button aria-expanded="false">
+              <div>
+                <h3>5. Evacuation Planning &amp; Safe Assembly</h3>
+                <div class="meta">Evacuation routes, assembly points, roles &amp; responsibilities</div>
+              </div>
+            </button>
+            <div class="panel">
+              <p>Plan, rehearse and evaluate evacuation routes for different hazards.</p>
+              <ul class="list-compact"><li>Assessment: timed evacuation drill &amp; route audit.</li></ul>
+            </div>
+          </li>
+
+          <!-- 6 -->
+          <li class="module" data-module="6">
+            <button aria-expanded="false">
+              <div>
+                <h3>6. School/College Disaster Management Plan (SDMP)</h3>
+                <div class="meta">Plan creation, roles, checklists, continuity of learning</div>
+              </div>
+            </button>
+            <div class="panel">
+              <p>Students and staff co-create an SDMP tailored to their campus.</p>
+              <ul class="list-compact"><li>Assessment: submitted SDMP and tabletop exercise.</li></ul>
+            </div>
+          </li>
+
+          <!-- 7 -->
+          <li class="module" data-module="7">
+            <button aria-expanded="false">
+              <div>
+                <h3>7. Psychological First Aid &amp; Child Protection</h3>
+                <div class="meta">Trauma-aware support, referral pathways, protection of vulnerable groups</div>
+              </div>
+            </button>
+            <div class="panel">
+              <p>Guidance for teachers and student leaders on supporting emotional recovery.</p>
+              <ul class="list-compact"><li>Assessment: scenario responses and resource list.</li></ul>
+            </div>
+          </li>
+
+          <!-- 8 -->
+          <li class="module" data-module="8">
+            <button aria-expanded="false">
+              <div>
+                <h3>8. Search &amp; Rescue Basics &amp; Safety for Responders</h3>
+                <div class="meta">Basic techniques, bystander safety, when to call trained teams</div>
+              </div>
+            </button>
+            <div class="panel">
+              <p>Emphasis on safety: do not put untrained students at risk. Invite professionals for demos.</p>
+            </div>
+          </li>
+
+          <!-- 9 -->
+          <li class="module" data-module="9">
+            <button aria-expanded="false">
+              <div>
+                <h3>9. Recovery, Rehabilitation &amp; Continuity of Learning</h3>
+                <div class="meta">Rapid needs assessment, phased return to school, psychosocial support</div>
+              </div>
+            </button>
+            <div class="panel">
+              <p>Guidelines for planning recovery of learning and infrastructure.</p>
+            </div>
+          </li>
+
+          <!-- 10 -->
+          <li class="module" data-module="10">
+            <button aria-expanded="false">
+              <div>
+                <h3>10. Community Engagement &amp; Local Partnerships</h3>
+                <div class="meta">Working with families, local authorities, volunteers, NGOs</div>
+              </div>
+            </button>
+            <div class="panel">
+              <p>Project-based learning: community awareness campaign or mock drill coordination.</p>
+            </div>
+          </li>
+
+          <!-- Additional modules (brief) -->
+          <li class="module" data-module="11">
+            <button aria-expanded="false"><div><h3>11. Climate Change &amp; Long-Term Resilience</h3><div class="meta">Linking climate risks to disaster education</div></div></button>
+            <div class="panel"><p>Include local climate trends and adaptation examples.</p></div>
+          </li>
+
+          <li class="module" data-module="12">
+            <button aria-expanded="false"><div><h3>12. Technology Tools (GIS, Mapping &amp; Data)</h3><div class="meta">Basic mapping, hazard layers, crowd-sourced reporting</div></div></button>
+            <div class="panel"><p>Intro to simple mapping tools and smartphone reporting (ethics &amp; safety).</p></div>
+          </li>
+
+          <li class="module" data-module="13">
+            <button aria-expanded="false"><div><h3>13. Laws, Policies &amp; School Safety Standards</h3><div class="meta">National/regional policies, school safety regulations</div></div></button>
+            <div class="panel"><p>Overview of relevant legal frameworks and compliance steps.</p></div>
+          </li>
+
+          <li class="module" data-module="14">
+            <button aria-expanded="false"><div><h3>14. Case Studies &amp; Local Hazard Profiles</h3><div class="meta">Analyze past events and local vulnerabilities</div></div></button>
+            <div class="panel"><p>Students prepare short presentations on local incidents and lessons learned.</p></div>
+          </li>
+
+          <li class="module" data-module="15">
+            <button aria-expanded="false"><div><h3>15. Assessment, Certification &amp; Badging</h3><div class="meta">Competency checklists, instructor sign-off, student badges</div></div></button>
+            <div class="panel"><p>Tools for tracking student progress and issuing certificates.</p></div>
+          </li>
+
+        </ul>
+
+        <div class="row">
+          <button class="btn" id="downloadSyllabus">Download Syllabus (PDF)</button>
+          <button class="btn ghost" id="printPage">Print</button>
+        </div>
+
+      </main>
+
+      <aside class="sidebar">
+        <div class="card">
+          <div class="kpi"><div class="pill">K-12 &amp; Higher Ed</div><div style="flex:1"><strong>Adaptable modules</strong><div class="meta">Tailor depth for age groups</div></div></div>
+          <hr style="border:none;border-top:1px solid #eef6f7;margin:12px 0">
+
+          <h4 style="margin:0">Quick resources</h4>
+          <ul style="margin-top:8px;color:var(--muted)">
+            <li>Teacher guides &amp; lesson plans</li>
+            <li>Drill checklists &amp; evaluation forms</li>
+            <li>Community engagement templates</li>
+          </ul>
+
+          <div style="margin-top:12px"><strong>Contact</strong>
+            <p class="meta">Email: disasterdock@gmail.com <br>Phone: +91 9065494811</p>
+          </div>
+
+          <div class="row" style="margin-top:12px">
+            <button class="btn" id="customizeBtn">Customize Curriculum</button>
+            <button class="btn ghost" id="shareBtn">Share</button>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="card">
+          <h4 style="margin-top:0">Suggested rollout</h4>
+          <ol style="margin:0;padding-left:18px;color:var(--muted)">
+            <li>Baseline assessment (1 week)</li>
+            <li>Core modules (term-long or modular blocks)</li>
+            <li>Drills &amp; community projects</li>
+          </ol>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      Built for the Disaster Preparedness &amp; Response Education System — adapt and reuse.
+    </footer>
+  </div>
+
+  <script>
+    // accordion behavior
+    document.querySelectorAll('.module button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const li = btn.closest('.module');
+        const open = li.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        // rotate indicator
+        const chev = btn.querySelector('.chev');
+        chev.textContent = open ? '▾' : '▸';
+      })
+    });
+
+  </script>
+</body>
+</html>

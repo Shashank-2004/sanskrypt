@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disaster Case Studies</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-10 text-center shadow-lg">
+    <h1 class="text-4xl font-bold mb-2">Case Studies of Disasters in India</h1>
+    <p class="text-lg opacity-90">Learning from past events to build a safer future</p>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-6xl mx-auto p-6 space-y-10">
+
+    <!-- Punjab Flood -->
+    <div id="punjab" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition duration-300">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">🌊 2025 Punjab Flood</h2>
+      <img src="https://media.gettyimages.com/id/2231756480/photo/residents-watch-as-rescue-personnel-patrol-a-flooded-area-after-a-rise-in-water-level-of-the.jpg?s=612x612&w=0&k=20&c=DxNXj0dpnc0cdsy_nWtqsKtnfQY6GGsnJm9MT3UYNEg=" alt="Punjab Flood" class="rounded-lg mb-4 w-full max-h-80 object-cover">
+      <button onclick="toggleContent('punjabContent')" class="text-blue-600 font-semibold flex items-center gap-2">
+        Details <i data-feather="chevron-down"></i>
+      </button>
+      <ul id="punjabContent" class="list-disc list-inside space-y-2 mt-3 hidden">
+        <li><strong>Date:</strong> August, 2025</li>
+        <li><strong>Location:</strong> Punjab, India</li>
+        <li><strong>Fatalities:</strong> Thousands homeless, widespread destruction.</li>
+        <li><strong>Affected Areas:</strong> 1400 villages across 13 districts.</li>
+        <li><strong>Cause:</strong> Heavy Monsoon rainfall, cloudbursts, dam releases.</li>
+        <li><strong>Impact:</strong> 2.5 lakh acres farmland submerged, 3.54M affected, 20,000 rescued.</li>
+        <li><strong>Response:</strong> NDRF & SDRF operations, relief camps, food supplies.</li>
+        <li><strong>Lesson:</strong> Flood management, dam regulation, awareness.</li>
+      </ul>
+    </div>
+
+    <!-- Gujarat Earthquake -->
+    <div id="gujarat" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition duration-300">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">🏚 2001 Gujarat Earthquake</h2>
+      <img src="https://images.unsplash.com/photo-1621077742331-2df96a07cca7?q=80&w=1185&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Gujarat Earthquake" class="rounded-lg mb-4 w-full max-h-80 object-cover">
+      <button onclick="toggleContent('gujaratContent')" class="text-blue-600 font-semibold flex items-center gap-2">
+        Details <i data-feather="chevron-down"></i>
+      </button>
+      <ul id="gujaratContent" class="list-disc list-inside space-y-2 mt-3 hidden">
+        <li><strong>Date:</strong> January 26, 2001</li>
+        <li><strong>Location:</strong> Bhuj, Gujarat</li>
+        <li><strong>Magnitude:</strong> 7.7 Mw</li>
+        <li><strong>Impact:</strong> 20,000 deaths, 167,000 injured, massive destruction.</li>
+        <li><strong>Cause:</strong> Indian & Eurasian tectonic plates movement.</li>
+        <li><strong>Lesson:</strong> Earthquake-resistant construction is crucial.</li>
+      </ul>
+    </div>
+
+    <!-- Bhopal Gas Tragedy -->
+    <div id="bhopal" class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition duration-300">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">☠ 1984 Bhopal Gas Tragedy</h2>
+      <img src="https://media.istockphoto.com/id/1155862030/photo/used-gas-welding-equipment-for-cutting-scrap-metal-with-torch-at-junkyard.webp?a=1&b=1&s=612x612&w=0&k=20&c=mEEoQo_H3fVf1UzvSem8epGBYIwjrJAa-NgCgHcR0T4=" alt="Bhopal Gas Tragedy" class="rounded-lg mb-4 w-full max-h-80 object-cover">
+      <button onclick="toggleContent('bhopalContent')" class="text-blue-600 font-semibold flex items-center gap-2">
+        Details <i data-feather="chevron-down"></i>
+      </button>
+      <ul id="bhopalContent" class="list-disc list-inside space-y-2 mt-3 hidden">
+        <li><strong>What happened?</strong> Toxic gas leak exposed 500,000+ people.</li>
+        <li><strong>Impact:</strong> Thousands died, long-term health issues.</li>
+        <li><strong>Lesson:</strong> Industrial safety laws & emergency planning are vital.</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- Back to top -->
+  <button onclick="scrollToTop()" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition">
+    <i data-feather="arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer class="bg-blue-700 text-white text-center p-4 mt-8">
+    <p>&copy; 2025 DisasterDock | Case Studies</p>
+  </footer>
+
+  <script>
+    feather.replace();
+
+    function toggleContent(id) {
+      const content = document.getElementById(id);
+      content.classList.toggle("hidden");
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
